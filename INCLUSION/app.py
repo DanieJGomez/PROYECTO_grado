@@ -1,13 +1,16 @@
-
+# Proyecto de grado: Plataforma de Orientación e Inclusión Educativa
+# Autor: ING Daniel Jose Gomez Supelano 
+# Fecha: 2024-05-7 - 2025/10/28
+# ESTE ARCHIVO: app.py - Archivo principal de la aplicación Flask, contiene la configuración, rutas y lógica principal del backend para manejar la autenticación, gestión de usuarios, sesiones de orientación, reportes y mensajes de contacto. 
 
 # Importar librerias 
 
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify, make_response
-import mysql.connector # Librería para conectar con MySQL 
-from werkzeug.security import generate_password_hash, check_password_hash #librería para contraseñas
-import os # para manejo de archivos y rutas
-from functools import wraps # para crear decoradores de funciones (ej: require_role)
-import sys # para manejo de excepciones y errores
+import mysql.connector                      # Librería para conectar con MySQL 
+from werkzeug.security import generate_password_hash, check_password_hash              #librería para contraseñas
+import os              # para manejo de archivos y rutas
+from functools import wraps                 # para crear decoradores de funciones (ej: require_role)
+import sys                   # para manejo de excepciones y errores
 from datetime import datetime
 from werkzeug.utils import secure_filename
 
