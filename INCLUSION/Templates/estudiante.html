@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='ico/logo.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Estudiante.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/barra.css') }}">
+    <title>Dashboard Estudiante - Plataforma Escolar</title>
+</head>
+<body>
+
+    <header>
+        <h1><a href="{{ url_for('home') }}">Colegio Técnico Jaime Pardo Leal</a></h1>
+        <div class="barra"></div>
+    </header>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">📚</div>
+                <span>Portal Estudiante</span>
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Inicio</a>
+                    </li>
+                    <li><a href="#">Mi Perfil</a></li>
+                    <li><a href="#">Mis Sesiones</a></li>
+                    <li><a href="#">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenedor principal -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Menú Rápido</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#">📊 Panel Principal</a></li>
+                    <li><a href="#">👤 Mi Perfil</a></li>
+                    <li><a href="#">🎯 Objetivos</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Información</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#">ℹ️ Ayuda</a></li>
+                    <li>
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('contactanos') }}">📧 Contacto</a>
+                    </li>
+            
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="content">
+            <!-- Sección de bienvenida -->
+            <div class="welcome-section">
+                <h1>¡Hola, Bienvenid@ {{ nombre }}</h1>
+                <p>Bienvenida a tu espacio personal de aprendizaje</p>
+            </div>
+
+            <!-- Tarjetas de estadísticas rápidas -->
+            <div class="stats-grid">
+               
+                <div class="stat-card">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-value">2</div>
+                    <div class="stat-label">Próximas Sesiones</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Asistencia</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Objetivos Activos</div>
+                </div>
+            </div>
+
+            <!-- Mi información -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        <span class="card-icon">👨‍🎓</span>
+                        Mi Información Personal
+                    </h2>
+                    <a href="#" class="btn btn-secondary btn-small">Editar Perfil</a>
+                </div>
+                <div class="student-info">
+                    <div class="info-item">
+                        <div class="info-label">Nombre Completo</div>
+                        <div class="info-value">{{ nombre }}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Grado</div>
+                        <div class="info-value">9° - Secundaria</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Edad</div>
+                        <div class="info-value">14 años</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Orientador Asignado</div>
+                        <div class="info-value">Lic. Carlos Ramírez</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Próximas sesiones -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        <span class="card-icon">📅</span>
+                        Mis Próximas Sesiones con Orientador
+                    </h2>
+                </div>
+                <ul class="session-list">
+                    <li class="session-item">
+                        <div>
+                            <div class="session-date">Lunes, 28 de Octubre 2025</div>
+                            <div class="session-details">
+                                <strong>Orientador:</strong> Lic. Carlos Ramírez<br>
+                                <strong>Hora:</strong> 2:00 PM - 3:00 PM<br>
+                                <strong>Tema:</strong> Seguimiento académico del segundo periodo<br>
+                                <strong>Lugar:</strong> Sala de Orientación, 2do piso
+                            </div>
+                        </div>
+                        <span class="session-status status-upcoming">Esta Semana</span>
+                    </li>
+                    <li class="session-item">
+                        <div>
+                            <div class="session-date">Viernes, 1 de Noviembre 2025</div>
+                            <div class="session-details">
+                                <strong>Orientador:</strong> Lic. María González<br>
+                                <strong>Hora:</strong> 10:00 AM - 11:00 AM<br>
+                                <strong>Tema:</strong> Orientación vocacional<br>
+                                <strong>Lugar:</strong> Sala de Orientación, 2do piso
+                            </div>
+                        </div>
+                        <span class="session-status status-programada">Programada</span>
+                    </li>
+                </ul>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-primary">Ver Todas Mis Sesiones</a>
+                </div>
+            </div>
+
+            <!-- Calificaciones recientes -->
+          
+
+            <!-- Reportes y observaciones que he recibido -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        <span class="card-icon">📋</span>
+                        Observaciones y Retroalimentación
+                    </h2>
+                </div>
+                <div class="report-item report-positive">
+                    <div class="report-title">✨ Informe de Desempeño - Segundo Periodo</div>
+                    <div class="report-date">Fecha: 15 de Octubre 2025 | Por: Lic. Carlos Ramírez</div>
+                    <div class="report-excerpt">
+                        Has demostrado un excelente desempeño en todas las áreas. Se destaca tu participación activa en clase y tu capacidad de trabajo en equipo. ¡Sigue así! 🌟
+                    </div>
+                </div>
+                <div class="report-item report-positive">
+                    <div class="report-title">😊 Observación Conductual</div>
+                    <div class="report-date">Fecha: 10 de Octubre 2025 | Por: Prof. Laura Gómez</div>
+                    <div class="report-excerpt">
+                        Has mostrado una actitud positiva y colaborativa durante las actividades de grupo. Tu comportamiento es ejemplar y sirve de modelo para tus compañeros.
+                    </div>
+                </div>
+                <div class="report-item report-neutral">
+                    <div class="report-title">📊 Reporte de Asistencia</div>
+                    <div class="report-date">Fecha: 5 de Octubre 2025 | Por: Sistema</div>
+                    <div class="report-excerpt">
+                        Asistencia del mes: 100%. No se registran ausencias ni llegadas tarde. Excelente compromiso con tu proceso educativo. 👏
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <a href="#" class="btn btn-primary">Ver Mi Historial Completo</a>
+                </div>
+            </div>
+
+            <!-- Mis objetivos -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        <span class="card-icon">🎯</span>
+                        Mis Objetivos de Aprendizaje
+                    </h2>
+                    <a href="#" class="btn btn-success btn-small">Agregar Objetivo</a>
+                </div>
+                <div class="goals-list">
+                    <div class="goal-item goal-progress">
+                        <div class="goal-header">
+                            <div class="goal-title">Mejorar en Matemáticas Avanzadas</div>
+                            <div class="goal-percentage">75%</div>
+                        </div>
+                        <div class="goal-bar">
+                            <div class="goal-bar-fill" style="width: 75%"></div>
+                        </div>
+                        <div class="goal-description">Completar ejercicios de álgebra y geometría</div>
+                    </div>
+                    <div class="goal-item goal-progress">
+                        <div class="goal-header">
+                            <div class="goal-title">Práctica de Inglés Conversacional</div>
+                            <div class="goal-percentage">60%</div>
+                        </div>
+                        <div class="goal-bar">
+                            <div class="goal-bar-fill" style="width: 60%"></div>
+                        </div>
+                        <div class="goal-description">Practicar 30 minutos diarios de conversación</div>
+                    </div>
+                    <div class="goal-item goal-completed">
+                        <div class="goal-header">
+                            <div class="goal-title">✅ Proyecto de Ciencias Naturales</div>
+                            <div class="goal-percentage">100%</div>
+                        </div>
+                        <div class="goal-bar">
+                            <div class="goal-bar-fill" style="width: 100%"></div>
+                        </div>
+                        <div class="goal-description">Investigación sobre ecosistemas - ¡Completado!</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

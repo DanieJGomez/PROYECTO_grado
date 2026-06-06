@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes de Contacto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/orientador.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mensajes.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='ico/logo.ico') }}">
+    l
+</head>
+<body>
+    <header>
+        <h1>         Panel de Administración</h1>
+    </header>
+
+    <div class="mensajes-container">
+        <div class="mensajes-card">
+            <div class="mensajes-header">
+                <h1>Mensajes Recibidos desde Contáctanos</h1>
+            </div>
+            
+            <div class="table-wrapper">
+                <table>
+       <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Teléfono</th>
+        <th>Asunto</th>
+        <th>Mensaje</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+    </tr>
+</thead>
+<tbody>
+    {% for m in mensajes %}
+    <tr>
+        <td class="id-cell">{{ m.id }}</td>
+        <td class="nombre-cell">{{ m.nombre }}</td>
+        <td class="correo-cell">
+            <a href="mailto:{{ m.correo }}">{{ m.correo }}</a>
+        </td>
+        <td class="telefono-cell">{{ m.telefono }}</td>
+        <td class="asunto-cell">{{ m.asunto }}</td>
+        <td class="mensaje-cell">{{ m.mensaje }}</td>
+        <td class="fecha-cell">{{ m.fecha }}</td>
+
+        <!-- ✅ UPDATE (Estado) -->
+        <td>
+            <form action="{{ url_for('actualizar_estado_mensaje', id=m.id) }}" method="POST">
+                <select name="estado" onchange="this.form.submit()">
+                    <option value="pendiente" {% if m.estado=='pendiente' %}selected{% endif %}>Pendiente</option>
+                    <option value="leído" {% if m.estado=='leído' %}selected{% endif %}>Leído</option>
+                    <option value="respondido" {% if m.estado=='respondido' %}selected{% endif %}>Respondido</option>
+                </select>
+            </form>
+        </td>
+
+        <!-- ✅ ACCIONES -->
+        <td>
+            <!-- Responder -->
+            <a href="mailto:{{ m.correo }}?subject=Respuesta a tu mensaje: {{ m.asunto }}" class="btn-accion">📩</a>
+
+            <!-- Eliminar -->
+            <form action="{{ url_for('eliminar_mensaje_orientador', id=m.id) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Seguro que quieres eliminar este mensaje?');">
+                <button type="submit" class="btn-eliminar">🗑️</button>
+            </form>
+        </td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="9">
+            <div class="empty-state">
+                <div class="empty-icon">📭</div>
+                <h3>No hay mensajes todavía</h3>
+                <p>Los mensajes de contacto aparecerán aquí cuando los usuarios envíen consultas</p>
+            </div>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+
+    <script>
+function accionMensaje(accion, id) {
+    if (accion === "eliminar") {
+        if (confirm("¿Seguro que deseas marcar como respondido? Se eliminará de la lista.")) {
+            window.location.href = "/mensajes/eliminar/" + id;
+        }
+    }
+}
+</script>
+</body>
+</html>

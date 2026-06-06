@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='ico/logo.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/Acudiente.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/barra.css') }}">
+    <title>Dashboard Acudiente - Plataforma Escolar</title>
+</head>
+<body>
+
+     <header>
+    <h1><a href="{{ url_for('home') }}">Colegio Técnico Jaime Pardo Leal </h1>
+      <div class="barra">
+
+      </div>
+</header>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">🎓</div>
+                <span>Dashboard Acudiente </span>
+            </div>
+            <nav>
+                <ul class="nav">
+                   <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Inicio</a>
+        <a href="{{ url_for('home') }}"><i class='bx bx-home-alt'></i></a>
+      </li>
+                    <li><a href="#">Perfil del Estudiante</a></li>
+                    <li><a href="#">Sesiones con Orientador</a></li>
+                    <li><a href="#">Reportes</a></li>
+                    <li><a href="#">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenedor principal -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Menú Rápido</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#">📊 Panel Principal</a></li>
+                    <li><a href="#">👤 Perfil Estudiante</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="content">
+            <!-- Sección de bienvenida -->
+            <div class="welcome-section">
+                <h1>Bienvenid@ {{ nombre }}</h1>
+                <p>Aquí puede ver toda la información académica y de orientación de su hijo(a)</p>
+            </div>
+
+            <!-- Información del estudiante -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        <span class="card-icon">👨‍🎓</span>
+                        Información del Estudiante
+                    </h2>
+                </div>
+                <div class="student-info">
+                    <div class="info-item">
+                        <div class="info-label">Nombre Completo</div>
+                        <div class="info-value">Ana María Camelo López</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Grado</div>
+                        <div class="info-value">9° - Secundaria</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Edad</div>
+                        <div class="info-value">11 años</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Promedio Académico</div>
+                        <div class="info-value">4.2 / 5.0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Próximas sesiones -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        <span class="card-icon">📅</span>
+                        Próximas Sesiones con Orientador
+                    </h2>
+                    <a href="#" class="btn btn-success">Solicitar Nueva Sesión</a>
+                </div>
+                <ul class="session-list">
+                    <li class="session-item">
+                        <div>
+                            <div class="session-date">Lunes, 21 de Octubre 2025</div>
+                            <div class="session-details">
+                                Orientador: Lic. Carlos Ramírez<br>
+                                Hora: 2:00 PM - 3:00 PM<br>
+                                Tema: Seguimiento académico del segundo periodo
+                            </div>
+                        </div>
+                        <span class="session-status status-upcoming">Próxima</span>
+                    </li>
+                    <li class="session-item">
+                        <div>
+                            <div class="session-date">Viernes, 1 de Noviembre 2025</div>
+                            <div class="session-details">
+                                Orientador: Lic. María González<br>
+                                Hora: 10:00 AM - 11:00 AM<br>
+                                Tema: Orientación vocacional
+                            </div>
+                        </div>
+                        <span class="session-status status-upcoming">Programada</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Reportes y observaciones -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        <span class="card-icon">📋</span>
+                        Reportes y Observaciones Recientes
+                    </h2>
+                </div>
+                <div class="report-item">
+                    <div class="report-title">Informe de Desempeño - Segundo Periodo</div>
+                    <div class="report-date">Fecha: 15 de Octubre 2025</div>
+                    <div class="report-excerpt">
+                        La estudiante ha demostrado un excelente desempeño en todas las áreas. Se destaca su participación activa en clase y su capacidad de trabajo en equipo. Se recomienda continuar con el apoyo en casa.
+                    </div>
+                </div>
+                <div class="report-item">
+                    <div class="report-title">Observación Conductual</div>
+                    <div class="report-date">Fecha: 10 de Octubre 2025</div>
+                    <div class="report-excerpt">
+                        Ana María ha mostrado una actitud positiva y colaborativa durante las actividades de grupo. Su comportamiento es ejemplar y sirve de modelo para sus compañeros.
+                    </div>
+                </div>
+                <div class="report-item">
+                    <div class="report-title">Reporte de Asistencia</div>
+                    <div class="report-date">Fecha: 5 de Octubre 2025</div>
+                    <div class="report-excerpt">
+                        Asistencia del mes: 100%. No se registran ausencias ni llegadas tarde. Excelente compromiso con el proceso educativo.
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <a href="#" class="btn btn-primary">Ver Historial Completo</a>
+                    <a href="#" class="btn btn-secondary">Descargar Reportes</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

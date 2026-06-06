@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Orientador - Plataforma Escolar</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/barra.css') }}">
+     <link rel="icon" href="{{ url_for('static', filename='ico/logo.ico') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/orientador.css') }}">
+</head>
+    <body>
+        <!-- Header -->
+        <header class="header">
+            <div class="header-container">
+                <div class="logo">
+                    <span>Dashboard Orientador</span>
+                </div>
+                <nav>
+                    <ul class="nav">
+                        <li><a href="/orientador/dashboard" class="active">Inicio</a></li>
+                        <li><a href="/logout">Cerrar Sesión</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Contenedor principal -->
+        <div class="main-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3><b>Acciones Rápidas</b></h3>
+                    <ul class="sidebar-menu">
+                        <li><a href="/orientador/dashboard">📊 Panel Principal</a></li>
+                        <li><a href="{{ url_for('orientador_reportes') }}">📝 Crear Reporte</a></li>
+                        <!-- REPORTES PDF -->
+    <div class="card">
+        <div class="card-header">
+            <h2>
+                <span class="card-icon">📄</span>
+                Descargar Reportes en PDF
+            </h2>
+        </div>
+        <div class="btn-group">
+            <a href="{{ url_for('reporte_sesiones_pdf') }}" 
+            class="btn btn-secondary" 
+            target="_blank">
+                📅 Sesiones
+            </a>
+        </div>
+    </div>
+                        <li><a href="/orientador/mensajes">💬 Mensajes</a></li>
+                    </ul>
+                </div>
+
+            </aside>
+
+        <!-- Contenido principal -->
+        <main class="content">
+            <!-- Sección de bienvenida -->
+            <div class="welcome-section">
+                <h1>Bienvenido {{ orientador_nombre }}</h1>
+                <p>Panel de gestión de orientación escolar</p>
+            </div>
+
+            <!-- Estadísticas rápidas -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">{{ total_estudiantes }}</div>
+                    <div class="stat-label">Estudiantes Asignados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{ sesiones_pendientes }}</div>
+                    <div class="stat-label">Sesiones Pendientes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{ reportes_mes }}</div>
+                    <div class="stat-label">Reportes del Mes</div>
+                </div>
+            </div>
+
+           
+
+            <!-- Formulario: Programar Sesión -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        <span class="card-icon">📅</span>
+                        Programar Nueva Sesión
+                    </h2>
+                </div>
+                <form action="/orientador/sesiones/crear" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sesion_estudiante_id">Estudiante *</label>
+                            <select id="sesion_estudiante_id" name="estudiante_id" class="form-control" required>
+                                <option value="">Seleccione un estudiante</option>
+                                {% for estudiante in estudiantes %}
+                                <option value="{{ estudiante.id }}">{{ estudiante.nombre_completo }} - {{ estudiante.grado }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha_sesion">Fecha *</label>
+                            <input type="date" id="fecha_sesion" name="fecha_sesion" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hora_inicio">Hora Inicio *</label>
+                            <input type="time" id="hora_inicio" name="hora_inicio" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="hora_fin">Hora Fin *</label>
+                            <input type="time" id="hora_fin" name="hora_fin" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tema_sesion">Tema de la Sesión *</label>
+                        <input type="text" id="tema_sesion" name="tema" class="form-control" placeholder="Ej: Seguimiento académico del segundo periodo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="notas_sesion">Notas / Observaciones</label>
+                        <textarea id="notas_sesion" name="notas" class="form-control" placeholder="Notas adicionales sobre la sesión..."></textarea>
+                    </div>
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success">Programar Sesión</button>
+                        <button type="reset" class="btn btn-secondary">Limpiar Formulario</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Lista de próximas sesiones programadas -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        <span class="card-icon">🗓️</span>
+                        Mis Próximas Sesiones
+                    </h2>
+                </div>
+                <ul class="session-list">
+                    {% for sesion in sesiones_proximas %}
+                    <li class="session-item">
+                        <div>
+                            <div class="session-date">{{ sesion.fecha_formateada }}</div>
+                            <div class="session-details">
+                                <strong>Estudiante:</strong> {{ sesion.estudiante_nombre }}<br>
+                                <strong>Hora:</strong> {{ sesion.hora_inicio }} - {{ sesion.hora_fin }}<br>
+                                <strong>Tema:</strong> {{ sesion.tema }}
+                            </div>
+                        </div>
+                        <div class="session-actions">
+                            <a href="/orientador/sesiones/editar/{{ sesion.id }}" class="btn btn-secondary btn-small">Editar</a>
+                            <a href="/orientador/sesiones/cancelar/{{ sesion.id }}" class="btn btn-danger btn-small" onclick="return confirm('¿Está seguro de cancelar esta sesión?')">Cancelar</a>
+                        </div>
+                    </li>
+                    {% else %}
+                    <li class="session-item">
+                        <div class="session-details">No hay sesiones programadas próximamente.</div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Tabla de estudiantes asignados -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        <span class="card-icon">👥</span>
+                        Estudiantes Asignados
+                    </h2>
+                </div>
+                <table class="students-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Grado</th>
+                            <th>Edad</th>
+                            <th>Promedio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for estudiante in estudiantes %}
+                        <tr>
+                            <td>{{ estudiante.nombre_completo }}</td>
+                            <td>{{ estudiante.grado }}</td>
+                            <td>{{ estudiante.edad }} años</td>
+                            <td>
+                                <span class="badge {% if estudiante.promedio >= 4.0 %}badge-success{% elif estudiante.promedio >= 3.0 %}badge-info{% else %}badge-warning{% endif %}">
+                                    {{ estudiante.promedio }}
+                                </span>
+                            </td>
+                            <td>
+                                <a href="/orientador/estudiantes/ver/{{ estudiante.id }}" class="btn btn-primary btn-small">Ver Perfil</a>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="5" style="text-align: center; color: #888;">No hay estudiantes asignados</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

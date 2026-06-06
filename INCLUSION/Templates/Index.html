@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Inclusión | Colegio Técnico Jaime Pardo Leal</title>
+    <link rel="icon" href="{{ url_for('static', filename='ico/logo.ico') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/barra.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/i.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+ <header>
+    <h1><a href="{{ url_for('home') }}">Colegio Técnico Jaime Pardo Leal </h1>
+      <div class="barra">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('home') }}"><i class='bx bx-home-alt'></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{{ url_for('login') }}">Iniciar Sesión</a>
+        <a href="{{ url_for('login') }}"><i class='bx bxs-key' ></i></a>
+      </li> 
+      <li>
+         <a class="nav-link active" aria-current="page" href="{{ url_for('contactanos') }}">Contáctanos</a>
+        <a href="{{ url_for('contactanos') }}"><i class='bx  bxs-envelope'  ></i> </a>
+      </li>
+      </div>
+</header>
+
+<!-- Botón Principal de Login -->
+ <section class="hero-section">
+        <div class="hero-text">
+            <h1 class="hero-title">Sistema de Orientación Estudiantil</h1>
+            <p class="hero-subtitle">Accede a nuestro sistema integral de orientación académica y psicológica. Conecta con nuestros orientadores profesionales para recibir apoyo personalizado.</p>
+        </div>
+        <a href="{{ url_for('login') }}" class="main-login-btn">
+            <i class='bx bxs-key'></i>Iniciar Sesión
+        </a>
+    </section>
+  <!-- Sección de Orientadores -->
+    <section class="orientadores-section">
+        <h2 class="orientadores-title">
+            <i class='bx bxs-user-voice'></i>Nuestros Orientadores
+        </h2>
+        <details name="acordion">
+            <summary>
+                Orientadores Jornada Mañana 
+                <i class='bx bxs-sun'></i>
+            </summary>
+            <div>
+                <p><strong>Orientador Principal:</strong> <a href="mailto:orientador1@colegiojpl.edu.co">orientador1@colegiojpl.edu.co</a></p>
+                <p><strong>Orientador Auxiliar:</strong> <a href="mailto:orientador2@colegiojpl.edu.co">orientador2@colegiojpl.edu.co</a></p>
+                <p><strong>Horario de atención:</strong> 7:00 AM - 12:00 PM</p>
+            </div>
+        </details>
+        <details name="acordion">
+            <summary>
+                Orientadores Jornada Tarde - Única 
+                <i class='bx bxs-moon'></i>
+            </summary>
+            <div>
+                <p><strong>Orientador Principal:</strong> <a href="mailto:orientador3@colegiojpl.edu.co">orientador3@colegiojpl.edu.co</a></p>
+                <p><strong>Horario de atención:</strong> 12:30 PM - 5:30 PM</p>
+                <p><strong>Especialidad:</strong> Orientación Vocacional y Académica</p>
+            </div>
+        </details>
+    </section>
+<br>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Colegio Técnico Jaime Pardo Leal</h3>
+            <p><strong>Dirección:</strong> CALLE 10 A # 3-63 sur Bogotá Colombia</p>
+            <p><strong>Teléfono:</strong> +57 (1) 234-5678</p>
+            <p><strong>Email:</strong> <a href="mailto:info@colegiojpl.edu.co">info@colegiojpl.edu.co</a></p>
+            
+            <div class="footer-divider"></div>
+            
+            <p class="footer-copyright">
+                &copy; 2025 Colegio Técnico Jaime Pardo Leal. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+</body>
+</html> 

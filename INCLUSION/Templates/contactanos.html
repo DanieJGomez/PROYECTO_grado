@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" href="{{ url_for('static', filename='ico/logo.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contactanos.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/barra.css') }}">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Contacto - Colegio Técnico Jaime Pardo Leal</title>
+</head>
+<body>
+    <header>
+    <h1><a href="{{ url_for('home') }}">Colegio Técnico Jaime Pardo Leal </h1>
+      <div class="barra">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('home') }}"><i class='bx bx-home-alt'></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{{ url_for('login') }}">Iniciar Sesión</a>
+        <a href="{{ url_for('login') }}"><i class='bx bxs-key' ></i></a>
+      </li> 
+      <li>
+         <a class="nav-link active" aria-current="page" href="{{ url_for('contactanos') }}">Contáctanos</a>
+        <a href="{{ url_for('contactanos') }}"><i class='bx  bxs-envelope'  ></i> </a>
+      </li>
+      </div>
+</header>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Contáctanos</h1>
+            <p class="subtitle">Estamos aquí para ayudarte. Comunícate con nosotros</p>
+        </header>
+
+        <!-- Contact Grid -->
+        <div class="contact-grid">
+            <!-- Contact -g -->
+            <div class="contact-form">
+                <h2 class="form-title">Envíanos un Mensaje</h2>
+                <form action="{{ url_for('contactanos') }}" method="POST">
+                    <div class="form-group">
+                        <label for="name"><u>Nombre Completo</u></label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email"><u>Correo Electrónico</u></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone"><u>Teléfono</u></label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject"><u>Asunto</u></label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Selecciona un asunto</option>
+                            <option value="informacion">Apoyo Académico</option>
+                            <option value="admisiones">Orientación Vocacional	</option>
+                            <option value="academico">Inclusión Educativa</option>
+                            <option value="soporte">Apoyo Psicosocial</option>
+                            <option value="soporte">Acompañamiento Familiar</option>
+                            <option value="soporte">Solicitud de Cita</option>
+                            <option value="soporte">Reporte de Situaciones de Riesgo</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message"><u>Mensaje</u></label>
+                        <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Enviar Mensaje</button>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h2 class="info-title">Información de Contacto</h2>
+                <div class="info-item">
+                    <div class="info-icon">🗺️</div>
+                    <div class="info-content">
+                        <h3>Dirección</h3>
+                        <p>CALLE 10 A # 3-63 sur <br>Bogotá Colombia</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div class="info-content">
+                        <h3>Teléfono</h3>
+                        <p>+57 (1) 234-5678<br>+57 3176620364</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">✉️</div>
+                    <div class="info-content">
+                        <h3>Email</h3>
+                        <p>info@colegiojpl.edu.co<br>admisiones@colegiojpl.edu.co</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">🕒</div>
+                    <div class="info-content">
+                        <h3>Horario de Atención</h3>
+                        <p>Lun - Vie: 7:00 AM - 5:00 PM<br>Sáb: 8:00 AM - 12:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flash-messages">
+      {% for category, message in messages %}
+        <div class="alert {{ category }}">
+          {{ message }}
+          <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <h2 class="map-title">Nuestra Ubicación</h2>
+            <div class="map-placeholder">
+                🗺️ Mapa
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3926.3185103371065!2d-74.09075632729834!3d4.586493971240927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f98fd4f79242f%3A0x131d52078801c597!2sCedit%20Jaime%20Pardo%20Leal!5e0!3m2!1ses-419!2sco!4v1758593411884!5m2!1ses-419!2sco" width="1400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <br>
+    CALLE 10 A No. 3-63 sur
+            <br><hr>
+        </div>
+
+<!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Colegio Técnico Jaime Pardo Leal. Todos los derechos reservados.</p>
+    </div>
+    </div>
+</body>
+</html>

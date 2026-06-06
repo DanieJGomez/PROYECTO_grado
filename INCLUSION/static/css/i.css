@@ -1,0 +1,317 @@
+    *
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+        }
+body
+      {   
+    min-height: 100vh;
+    background: url("../img/colegio.png") no-repeat center center fixed;
+   background-position: center center;
+    background-repeat:no-repeat ;
+    background-size: cover;
+    background-attachment: fixed;
+
+      }
+    header
+{   
+    display: block;
+    background: #0d1e4c;
+    width: 100%;
+    text-align: center; 
+    margin-left:  20%;
+    margin: 0 auto;
+    padding-top: 10px;
+    justify-content: space-between;
+    color:#e5c9d7;
+}
+        /* Hero Section */
+        .hero-section {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 2px;
+        }
+
+        .hero-text {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 25px;
+            color: white;
+            max-width: 800px;
+            box-shadow: 10px 20px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(253, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .hero-title {
+            font-size: 2,5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.589);
+            line-height: 1.3;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 0px;
+            line-height: 1.5;
+        }
+        /* Estilos para el botón principal */
+    .main-login-section {
+            text-align: center;
+            margin: 12px;
+            padding: 30px 20px;
+        }
+    .main-login-btn {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #0d1e4c, #000000);
+            color: #e5c9d7;;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 22px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: 0 10px 30px rgba(13, 30, 76, 0.4);
+            transition: all 0.5s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }  
+        .main-login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.75s;
+        }      
+        .main-login-btn:hover::before {
+            left: 100%;
+        } 
+        .main-login-btn:hover {
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(13, 30, 76, 0.6);
+            border-radius: 12px;
+            background: linear-gradient(135deg, #1a2d5a, #333333);
+            border-color: rgba(0, 19, 59, 0.795);
+        }
+        
+        .main-login-btn:active {
+            transform: translateY(-2px);
+        }
+        .main-login-btn i {
+            margin-right: 15px;
+            font-size: 20px;
+            vertical-align: middle;
+        }
+        /* Sección de Orientadores */
+        .orientadores-section {
+            background: rgba(255, 255, 255, 0.411);
+            backdrop-filter: blur(15px);
+            margin: 40px 30px;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .orientadores-title {
+            text-align: center;
+            color: #0d1e4c;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .orientadores-title i {
+            color: #0d1e4c;
+            margin-right: 15px;
+        }
+        /* Mejorar los acordeones */
+        details {
+            margin-bottom: 20px;
+            border: 2px solid #516f85;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        details:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            border-radius: 20px;
+        }
+        details[open] {
+            border-color: #0d1e4c;
+        }
+        summary {
+            background: linear-gradient(135deg, #98a9b6, #daedfc);
+            color: #0d1e4c;
+            padding: 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+
+        }
+        summary:hover {
+            background: linear-gradient(135deg, #a6b8c5, #e8f3fc);
+        }
+        summary i {
+            margin-left: 10px;
+            font-size: 1.2rem;
+            color: #0d1e4c;
+        }
+        details div {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.527);
+        }
+        details p {
+            margin: 10px 0;
+            color: black;
+            font-size: 1rem;
+        }
+        details a {
+            color:#0d47a1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.34s ease;
+        }
+        details a:hover {
+            color: #e5c9d7;
+            text-decoration: underline;
+            border-radius: 15px;
+        }
+        /* Footer */
+        .footer {
+            background: #0b1b32;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 48px;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer h3 {
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        .footer p {
+            margin: 10px 0;
+            opacity: 1;
+        }
+        .footer a {
+            color: #9bc9f8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #e5c9d7;
+            text-decoration: underline;
+            border-radius: 10px;
+        }
+        .footer-divider {
+            height: 2px;
+            background: rgba(255, 255, 255, 0.116);
+            margin: 20px 0;
+        }
+        .footer-copyright {
+            font-size: 0.9rem;
+            opacity: 0.8    ;
+            margin-top: 15px;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-text {
+                padding: 25px;
+            }
+
+            .main-login-btn {
+                padding: 15px 35px;
+                font-size: 1rem;
+            }
+
+            .orientadores-section {
+                margin: 20px 10px;
+                padding: 25px;
+            }
+
+            .orientadores-title {
+                font-size: 1.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 40px 15px;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .orientadores-title {
+                font-size: 1.5rem;
+            }
+
+            summary {
+                padding: 15px;
+                font-size: 1rem;
+            }
+
+            details div {
+                padding: 20px;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-login-btn {
+                padding: 18px 35px;
+                font-size: 18px;
+                letter-spacing: 1px;
+            }  
+            .main-login-btn i {
+                font-size: 20px;
+                margin-right: 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            .main-login-btn {
+                padding: 15px 25px;
+                font-size: 16px;
+                width: 90%;
+                max-width: 300px;
+            }
+        }
+
+
